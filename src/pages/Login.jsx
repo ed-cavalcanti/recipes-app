@@ -33,7 +33,26 @@ const Login = ({ history }) => {
     localApi.setLocalKey('cocktailsToken', '1');
     localApi.setLocalKey('user', { email });
     localApi.setLocalKey('doneRecipes', []);
-    localApi.setLocalKey('favoriteRecipes', []);
+    localApi.setLocalKey('favoriteRecipes', [
+      {
+        id: '52771',
+        type: 'food',
+        nationality: 'Italian',
+        category: 'Vegetarian',
+        alcoholicOrNot: '',
+        name: 'Spicy Arrabiata Penne',
+        image: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
+      },
+      {
+        id: '178319',
+        type: 'drink',
+        nationality: '',
+        category: 'Cocktail',
+        alcoholicOrNot: 'Alcoholic',
+        name: 'Aquamarine',
+        image: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
+      },
+    ]);
     localApi.setLocalKey('inProgressRecipes', { cocktails: {}, meals: {} });
     history.push('/foods');
   };
