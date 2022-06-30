@@ -59,7 +59,7 @@ const FavoriteRecipes = () => {
         </button>
       </section>
       {
-        filteredRecipes.map((recipe, index) => (
+        filteredRecipes?.map((recipe, index) => (
           <FavoriteCard key={ index } index={ index } recipe={ recipe } />
         ))
       }
