@@ -1,0 +1,9 @@
+.buttons-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.teste {
+  color: #fffffe;
+  background-color: #ff8906;
+}

@@ -7,6 +7,7 @@ import '../../component/recipeCard.css';
 import Gallery from '../../component/Gallery';
 import { MeuContextoInterno } from '../../context';
 import * as localApi from '../../helpers/localApi/index';
+import '../food/food&drink.css';
 
 const Drink = () => {
   const { id: urlId } = useParams();
@@ -105,68 +106,76 @@ const Drink = () => {
         isLoading
           ? (<h1 className="loading">Loading...</h1>)
           : (
-            <div>
+            <div className="details-container">
               <img
-                className="card-img card-img-mine"
+                className="image"
                 data-testid="recipe-photo"
                 src={ strDrinkThumb }
                 alt={ strDrink }
               />
 
               <h1 data-testid="recipe-title" className="l-drink">{ strDrink }</h1>
-
-              <button
-                type="button"
-                data-testid="share-btn"
-                onClick={ () => linkToClipboard() }
-              >
-                <img src={ shareIcon } alt="Share" className="share-icon" />
-                { isURLcopied && <p>Link copied!</p> }
-              </button>
-
-              <button
-                type="button"
-                data-testid="favorite-btn"
-                onClick={ () => handleFavoriteBtn() }
-                src={ isFavorite ? blackHeartIcon : whiteHeartIcon }
-              >
-                <img
-                  src={ isFavorite ? blackHeartIcon : whiteHeartIcon }
-                  alt="Favorite"
-                  className="favorite-icon"
-                />
-              </button>
-
               <p data-testid="recipe-category">{strAlcoholic}</p>
 
-              <ul>
-                {filterIgredients(recipeDetails).map((ingredient, index) => (
-                  <li
-                    key={ index }
-                    data-testid={ `${index}-ingredient-name-and-measure` }
-                  >
-                    { ingredient }
-                  </li>
-                ))}
-              </ul>
+              <section className="actions-btns">
+                <button
+                  className="share-button"
+                  type="button"
+                  data-testid="share-btn"
+                  onClick={ () => linkToClipboard() }
+                >
+                  <img src={ shareIcon } alt="Share" className="share-icon" />
+                  { isURLcopied && <p>Link copied!</p> }
+                </button>
 
-              <p data-testid="instructions">{strInstructions}</p>
+                <button
+                  className="favorite-button"
+                  type="button"
+                  data-testid="favorite-btn"
+                  onClick={ () => handleFavoriteBtn() }
+                  src={ isFavorite ? blackHeartIcon : whiteHeartIcon }
+                >
+                  <img
+                    src={ isFavorite ? blackHeartIcon : whiteHeartIcon }
+                    alt="Favorite"
+                    className="favorite-icon"
+                  />
+                </button>
+              </section>
+
+              <section className="ingredients-container">
+                <h6>Ingredients:</h6>
+                <ul>
+                  {filterIgredients(recipeDetails).map((ingredient, index) => (
+                    <li
+                      key={ index }
+                      data-testid={ `${index}-ingredient-name-and-measure` }
+                    >
+                      { ingredient }
+                    </li>
+                  ))}
+                </ul>
+              </section>
+
+              <section className="instructions">
+                <p data-testid="instructions">{strInstructions}</p>
+              </section>
 
               <Gallery recipes={ recomendation } type="drinks" />
-              {isBtnEnable && (
-                <Link to={ `${urlId}/in-progress` }>
-                  <button
-                    type="button"
-                    data-testid="start-recipe-btn"
-                    className="start-btn btn btn-primary btn-lg"
-                  >
-                    { isRecipeInProgress ? 'Continue Recipe' : 'Start Recipe' }
-                  </button>
-                </Link>
-              )}
             </div>
           )
       }
+      {isBtnEnable && (
+        <Link to={ `${urlId}/in-progress` }>
+          <button
+            type="button"
+            data-testid="start-recipe-btn"
+            className="start-btn btn btn-dark btn-lg"
+          >
+            { isRecipeInProgress ? 'Continue Recipe' : 'Start Recipe' }
+          </button>
+        </Link>
+      )}
     </div>
   );
 };

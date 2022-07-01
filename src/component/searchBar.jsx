@@ -31,7 +31,7 @@ const SearchBar = ({ callback }) => {
         />
         <button
           type="button"
-          className="btn btn-outline-primary"
+          className="search"
           data-testid="exec-search-btn"
           onClick={ () => { onClick(); } }
         >

@@ -8,6 +8,7 @@ import * as localApi from '../../helpers/localApi/index';
 import {
   linkToClipboard, filterIngredients, verifyChecked, setFinished,
 } from '../../helpers/Handlers/index';
+import './food&drink.css';
 
 const FoodInProgress = () => {
   const { id: urlId } = useParams();
@@ -90,81 +91,85 @@ const FoodInProgress = () => {
       {isLoading
         ? (<h1 className="loading">Loading...</h1>)
         : (
-          <div>
+          <div className="details-container">
             <img
-              className="card-img card-img-mine"
+              className="image"
               data-testid="recipe-photo"
               src={ strMealThumb }
               alt={ strMeal }
             />
 
             <h1 data-testid="recipe-title" className="l-food">{ strMeal }</h1>
+            <p data-testid="recipe-category">{strCategory}</p>
 
-            <button
-              type="button"
-              data-testid="share-btn"
-              onClick={ () => setCopiedURL((linkToClipboard(urlId, 'food'))) }
-            >
-              <img src={ shareIcon } alt="Share" className="share-icon" />
-              { isURLcopied && <p>Link copied!</p> }
-            </button>
+            <section className="actions-btns">
+              <button
+                type="button"
+                data-testid="share-btn"
+                onClick={ () => setCopiedURL((linkToClipboard(urlId, 'food'))) }
+              >
+                <img src={ shareIcon } alt="Share" className="share-icon" />
+                { isURLcopied && <p>Link copied!</p> }
+              </button>
 
-            <button
-              type="button"
-              data-testid="favorite-btn"
-              onClick={ () => handleFavoriteBtn() }
-              src={ isFavorite ? blackHeartIcon : whiteHeartIcon }
-            >
-              <img
+              <button
+                type="button"
+                data-testid="favorite-btn"
+                onClick={ () => handleFavoriteBtn() }
                 src={ isFavorite ? blackHeartIcon : whiteHeartIcon }
-                alt="Favorite"
-                className="favorite-icon"
-              />
-            </button>
+              >
+                <img
+                  src={ isFavorite ? blackHeartIcon : whiteHeartIcon }
+                  alt="Favorite"
+                  className="favorite-icon"
+                />
+              </button>
+            </section>
+            <section className="ingredients-container">
+              <h6>Ingredients:</h6>
+              <ul>
+                {filterIngredients(foodInProgress).map((ingredient, index) => (
+                  <li
+                    style={
+                      (checkedIng.includes(ingredient))
+                        ? ({ textDecoration: 'line-through' }) : null
+                    }
+                    data-testid={ `${index}-ingredient-step` }
+                    key={ index }
+                  >
+                    <input
+                      type="checkbox"
+                      name={ ingredient }
+                      id={ ingredient }
+                      checked={ checkedIng.includes(ingredient) }
+                      onChange={ (e) => setCheckedIng(verifyChecked(e, checkedIng)) }
+                    />
+                    { ingredient }
+                  </li>
+                ))}
+              </ul>
+            </section>
 
-            <h3 data-testid="recipe-category">{strCategory}</h3>
-
-            <ul>
-              {filterIngredients(foodInProgress).map((ingredient, index) => (
-                <li
-                  style={
-                    (checkedIng.includes(ingredient))
-                      ? ({ textDecoration: 'line-through' }) : null
-                  }
-                  data-testid={ `${index}-ingredient-step` }
-                  key={ index }
-                >
-                  <input
-                    type="checkbox"
-                    name={ ingredient }
-                    id={ ingredient }
-                    checked={ checkedIng.includes(ingredient) }
-                    onChange={ (e) => setCheckedIng(verifyChecked(e, checkedIng)) }
-                  />
-                  { ingredient }
-                </li>
-              ))}
-            </ul>
-
-            <p data-testid="instructions">{strInstructions}</p>
-
-            {isBtnEnable && (
-              <Link to="/done-recipes">
-                <button
-                  type="button"
-                  data-testid="finish-recipe-btn"
-                  className="start-btn btn btn-secondary btn-lg"
-                  disabled={
-                    setFinished(checkedIng.length,
-                      filterIngredients(foodInProgress).length)
-                  }
-                >
-                  { isRecipeInProgress ? 'Continue Recipe' : 'Finish Recipe' }
-                </button>
-              </Link>
-            )}
+            <section className="instructions">
+              <p data-testid="instructions">{strInstructions}</p>
+            </section>
           </div>
         )}
+      {isBtnEnable && (
+        <Link to="/done-recipes">
+          <button
+            type="button"
+            data-testid="finish-recipe-btn"
+            className="start-btn btn btn-secondary btn-lg"
+            disabled={
+              setFinished(checkedIng.length,
+                filterIngredients(foodInProgress).length)
+            }
+          >
+            { isRecipeInProgress ? 'Continue Recipe' : 'Finish Recipe' }
+          </button>
+        </Link>
+      )}
     </div>
   );
 };

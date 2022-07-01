@@ -3,6 +3,8 @@ import propTypes from 'prop-types';
 
 import { MeuContextoInterno } from '../context';
 
+import './categoryButtons.css';
+
 const ToggleCatButtons = ({ foodType }) => {
   const [activeButton, setActiveButton] = useState('');
 
@@ -43,7 +45,7 @@ const ToggleCatButtons = ({ foodType }) => {
       <label
         type="button"
         data-testid="All-category-filter"
-        className="btn btn-sm btn-dark"
+        className="btn btn-sm btn-dark teste"
         htmlFor="All"
       >
         <input type="radio" name="options" id="All" onClick={ handleAllClick } />
@@ -53,7 +55,7 @@ const ToggleCatButtons = ({ foodType }) => {
         <label
           key={ index }
           data-testid={ `${cat}-category-filter` }
-          className={ `btn btn-sm btn-dark ${activeButton === cat ? 'active' : ''}` }
+          className={ `btn btn-sm btn-dark ${activeButton === cat ? 'teste2' : ''}` }
           htmlFor={ cat }
         >
           <input type="radio" name="options" id={ cat } onClick={ handleClick } />

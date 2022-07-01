@@ -3,6 +3,7 @@ import Header from '../../../component/header';
 import SearchBar from '../../../component/searchBar';
 import Footer from '../../../component/Footer';
 import RecipeCard from '../../../component/recipeCard';
+import '../explore.css';
 
 const ExpFoodsNat = () => {
   const [search, setSearch] = useState(false);
@@ -47,6 +48,7 @@ const ExpFoodsNat = () => {
       <Header title="Explore Nationalities" search callback={ toggleSearchBar } />
       {search && (<SearchBar />)}
       <select
+        className="nat-select space form-select"
         name="nationality"
         data-testid="explore-by-nationality-dropdown"
         onChange={ handleFilter }
@@ -62,7 +64,7 @@ const ExpFoodsNat = () => {
           </option>
         )) }
       </select>
-      <section>
+      <section className="explore-nationality">
         {recipes.map((recipe, index) => (
           <RecipeCard key={ index } type="Meal" recipe={ recipe } index={ index } />
         ))}

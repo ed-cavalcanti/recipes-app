@@ -5,6 +5,7 @@ import shareIcon from '../images/shareIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import * as localApi from '../helpers/localApi';
+import './favoriteCard.css';
 
 const FavoriteCard = ({ index, recipe }) => {
   const [isURLcopied, setCopiedURL] = useState(false);
@@ -32,9 +33,10 @@ const FavoriteCard = ({ index, recipe }) => {
   };
 
   return (
-    <div>
-      <Link to={ `${recipe.type}s/${recipe.id}` }>
+    <div className="favorite-card">
+      <Link className="link" to={ `${recipe.type}s/${recipe.id}` }>
         <img
+          className="img"
           alt={ recipe.name }
           src={ recipe.image }
           data-testid={ `${index}-horizontal-image` }
@@ -47,30 +49,32 @@ const FavoriteCard = ({ index, recipe }) => {
         <p data-testid={ `${index}-horizontal-name` }>{ recipe.name }</p>
       </Link>
       <p data-testid={ `${index}-horizontal-done-date` }>{recipe.doneDate }</p>
-      <button
-        type="button"
-        onClick={ () => linkToClipboard() }
-      >
-        <img
-          data-testid={ `${index}-horizontal-share-btn` }
-          src={ shareIcon }
-          alt="Share"
-          className="share-icon"
-        />
-        { isURLcopied && <p>Link copied!</p> }
-      </button>
-      <button
-        type="button"
-        data-testid={ `${index}-horizontal-favorite-btn` }
-        onClick={ () => handleFavoriteBtn() }
-        src={ isFavorite ? blackHeartIcon : whiteHeartIcon }
-      >
-        <img
+      <section className="btn-container">
+        <button
+          type="button"
+          onClick={ () => linkToClipboard() }
+        >
+          <img
+            data-testid={ `${index}-horizontal-share-btn` }
+            src={ shareIcon }
+            alt="Share"
+            className="share-icon"
+          />
+          { isURLcopied && <p>Link copied!</p> }
+        </button>
+        <button
+          type="button"
+          data-testid={ `${index}-horizontal-favorite-btn` }
+          onClick={ () => handleFavoriteBtn() }
           src={ isFavorite ? blackHeartIcon : whiteHeartIcon }
-          alt="Favorite"
-          className="favorite-icon"
-        />
-      </button>
+        >
+          <img
+            src={ isFavorite ? blackHeartIcon : whiteHeartIcon }
+            alt="Favorite"
+            className="favorite-icon"
+          />
+        </button>
+      </section>
     </div>
   );
 };

@@ -8,6 +8,8 @@ import Footer from '../../component/Footer';
 import RecipeCard from '../../component/recipeCard';
 import ToggleCatButtons from '../../component/toggleCatButtons';
 
+import './Foods.css';
+
 const MAX_RECIPES = 12;
 
 const Foods = ({ history }) => {
@@ -42,16 +44,18 @@ const Foods = ({ history }) => {
       <Header title="Foods" search callback={ toggleSearchBar } />
       {search && (<SearchBar callback={ fetchFoods } />)}
       <ToggleCatButtons foodType="MEALS" />
-      {foods
-        ? foods.slice(0, MAX_RECIPES).map((food, index) => (
-          <RecipeCard
-            key={ food.idMeal }
-            recipe={ food }
-            type="Meal"
-            index={ index }
-          />))
-        : noResults()}
-      <Footer />
+      <section className="recipes-container">
+        {foods
+          ? foods.slice(0, MAX_RECIPES).map((food, index) => (
+            <RecipeCard
+              key={ food.idMeal }
+              recipe={ food }
+              type="Meal"
+              index={ index }
+            />))
+          : noResults()}
+        <Footer />
+      </section>
     </div>
   );
 };

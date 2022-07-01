@@ -1,0 +1,14 @@
+.l-foods {
+  background-color: #1c1b1f;
+}
+
+.l-drink {
+  background-color: #1c1b1f;
+}
+
+.recipes-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

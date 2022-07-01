@@ -19,7 +19,7 @@ const RecipeCard = ({ recipe, type, index }) => {
 
   return (
     <div
-      className="card bg-dark text-white shadow-sm"
+      className="card recipe-card"
       data-testid={ `${index}-recipe-card` }
     >
       <Link to={ redirect() }>

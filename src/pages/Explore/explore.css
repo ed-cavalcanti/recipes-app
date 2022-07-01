@@ -1,0 +1,44 @@
+.l-explore {
+  background-color: #1c1b1f;
+  height: 100%;
+}
+
+.l-explore-foods {
+  background-color: #1c1b1f;
+  height: 100%;
+}
+
+.l-explore-foods-nationalities {
+  align-items: center;
+  background-color: #1c1b1f;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+}
+
+.explore-container {
+  display: flex;
+  flex-direction: column;
+  height: 550px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  width: 80%;
+}
+
+.explore-nationality {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.nat-select {
+  height: 30px;
+  text-align: center;
+  width: 250px;
+}
+
+.space {
+  margin-top: 20px;
+}

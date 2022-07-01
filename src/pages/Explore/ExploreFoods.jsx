@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../component/header';
 import Footer from '../../component/Footer';
+import './explore.css';
 
 const ExploreFoods = () => {
   const [id, setId] = useState('');
@@ -19,27 +20,29 @@ const ExploreFoods = () => {
   return (
     <div className="l-explore-foods">
       <Header title="Explore Foods" />
-      <Link
-        to="/explore/foods/ingredients"
-        data-testid="explore-by-ingredient"
-        className="btn btn-primary btn-dark"
-      >
-        By Ingredient
-      </Link>
-      <Link
-        to="/explore/foods/nationalities"
-        data-testid="explore-by-nationality"
-        className="btn btn-primary btn-dark"
-      >
-        By Nationality
-      </Link>
-      <Link
-        to={ `/foods/${id}` }
-        data-testid="explore-surprise"
-        className="btn btn-primary btn-dark"
-      >
-        Surprise me!
-      </Link>
+      <div className="explore-container">
+        <Link
+          to="/explore/foods/ingredients"
+          data-testid="explore-by-ingredient"
+          className="btn btn-primary btn-dark"
+        >
+          By Ingredient
+        </Link>
+        <Link
+          to="/explore/foods/nationalities"
+          data-testid="explore-by-nationality"
+          className="space btn btn-primary btn-dark"
+        >
+          By Nationality
+        </Link>
+        <Link
+          to={ `/foods/${id}` }
+          data-testid="explore-surprise"
+          className="space btn btn-primary btn-dark"
+        >
+          Surprise me!
+        </Link>
+      </div>
       <Footer />
     </div>
   );

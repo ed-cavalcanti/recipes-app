@@ -16,12 +16,7 @@ const Header = ({ title, search, callback }) => (
         />
       </Link>
     </div>
-    <div
-      className="l-header__title"
-      data-testid="page-title"
-    >
-      <h1>{ title }</h1>
-    </div>
+    <h2 data-testid="page-title">{ title }</h2>
     <div className="l-header__search">
       { search && (
         <button type="button" className="btn btn-link" onClick={ () => callback() }>

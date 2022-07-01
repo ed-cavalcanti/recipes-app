@@ -1,6 +1,8 @@
 .footer {
-  background-color: rgb(228, 228, 228);
+  background-color: #0f0e17;
+  border-radius: 5px 5px 0 0;
   bottom: 0;
+  box-shadow: 0 -23px 24px -14px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;

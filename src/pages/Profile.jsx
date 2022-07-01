@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import Header from '../component/header';
 import Footer from '../component/Footer';
 import * as localApi from '../helpers/localApi/index';
+import './profile.css';
 
 const Profile = () => {
   const [userEmail, setUserEmail] = useState('');
@@ -27,12 +28,12 @@ const Profile = () => {
   return (
     <div className="l-profile">
       <Header title="Profile" />
-      <section className="d-grid gap-2 col-10 mx-auto d-flex flex-column">
-        <p data-testid="profile-email">{ userEmail }</p>
+      <p data-testid="profile-email">{ userEmail }</p>
+      <section className="buttons-container">
         <Link
           to="/done-recipes"
           data-testid="profile-done-btn"
-          className="btn btn-primary btn-dark"
+          className="link btn btn-primary btn-dark"
         >
           Done Recipes
         </Link>
@@ -40,7 +41,7 @@ const Profile = () => {
         <Link
           to="/favorite-recipes"
           data-testid="profile-favorite-btn"
-          className="btn btn-primary btn-dark"
+          className="link btn btn-primary btn-dark"
         >
           Favorite Recipes
         </Link>

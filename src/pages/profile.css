@@ -1,0 +1,28 @@
+.l-profile {
+  background-color: #1c1b1f;
+  display: flex;
+  flex-direction: column;
+  height: 550px;
+}
+
+.buttons-container {
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+.buttons-container button {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.link {
+  margin-top: 20px;
+  width: 100%;
+}
+
+p {
+  padding: 20px;
+  text-align: center;
+}

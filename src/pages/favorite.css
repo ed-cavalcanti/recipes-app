@@ -1,0 +1,37 @@
+* {
+  color: #fffffe;
+}
+
+.main-container {
+  align-items: center;
+  background-color: #1c1b1f;
+}
+
+.l-favorite-recipes {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.filter-buttons {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  width: 80%;
+}
+
+.filter-buttons button {
+  background-color: #fffffe00;
+  border: 1px solid #ff8906;
+  border-radius: 8px;
+  color: #ff8906;
+  width: 80px;
+}
+
+.filter-buttons button:hover {
+  background-color: #ff8906;
+  border: 1px solid black;
+  color: black;
+}
