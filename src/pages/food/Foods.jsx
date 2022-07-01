@@ -40,22 +40,24 @@ const Foods = ({ history }) => {
   };
 
   return (
-    <div className="l-foods">
+    <div className="main">
       <Header title="Foods" search callback={ toggleSearchBar } />
-      {search && (<SearchBar callback={ fetchFoods } />)}
-      <ToggleCatButtons foodType="MEALS" />
-      <section className="recipes-container">
-        {foods
-          ? foods.slice(0, MAX_RECIPES).map((food, index) => (
-            <RecipeCard
-              key={ food.idMeal }
-              recipe={ food }
-              type="Meal"
-              index={ index }
-            />))
-          : noResults()}
-        <Footer />
-      </section>
+      <div className="l-foods">
+        {search && (<SearchBar callback={ fetchFoods } />)}
+        <ToggleCatButtons foodType="MEALS" />
+        <section className="recipes-container">
+          {foods
+            ? foods.slice(0, MAX_RECIPES).map((food, index) => (
+              <RecipeCard
+                key={ food.idMeal }
+                recipe={ food }
+                type="Meal"
+                index={ index }
+              />))
+            : noResults()}
+        </section>
+      </div>
+      <Footer />
     </div>
   );
 };

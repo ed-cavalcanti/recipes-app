@@ -31,6 +31,21 @@
   width: 150px;
 }
 
+.btn-container2 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  width: 150px;
+}
+
+.btn-container2 button {
+  background-color: rgba(255, 255, 255, 0);
+  border: 2px solid #ff8906;
+  border-radius: 8px;
+  height: 50px;
+  width: 50px;
+}
+
 .btn-container button {
   background-color: rgba(255, 255, 255, 0);
   border: 2px solid #ff8906;
@@ -41,4 +56,8 @@
 
 .btn-container button:hover {
   background-color: #ffffff1c;
+}
+
+.done p {
+  margin: -10px;
 }

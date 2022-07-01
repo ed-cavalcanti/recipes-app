@@ -2,6 +2,32 @@ import React, { useState } from 'react';
 import propTypes from 'prop-types';
 import * as localApi from '../helpers/localApi/index';
 import 'bootstrap/dist/css/bootstrap.css';
+import './login.css';
+
+const mock = [
+  {
+    id: '52771',
+    type: 'food',
+    nationality: 'Italian',
+    category: 'Vegetarian',
+    alcoholicOrNot: '',
+    name: 'Spicy Arrabiata Penne',
+    image: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
+    doneDate: '23/06/2020',
+    tags: ['Pasta', 'Curry'],
+  },
+  {
+    id: '178319',
+    type: 'drink',
+    nationality: '',
+    category: 'Cocktail',
+    alcoholicOrNot: 'Alcoholic',
+    name: 'Aquamarine',
+    image: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
+    doneDate: '23/06/2020',
+    tags: [],
+  },
+];
 
 const Login = ({ history }) => {
   const [email, setEmail] = useState('');
@@ -32,27 +58,8 @@ const Login = ({ history }) => {
     localApi.setLocalKey('mealsToken', '1');
     localApi.setLocalKey('cocktailsToken', '1');
     localApi.setLocalKey('user', { email });
-    localApi.setLocalKey('doneRecipes', []);
-    localApi.setLocalKey('favoriteRecipes', [
-      {
-        id: '52771',
-        type: 'food',
-        nationality: 'Italian',
-        category: 'Vegetarian',
-        alcoholicOrNot: '',
-        name: 'Spicy Arrabiata Penne',
-        image: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
-      },
-      {
-        id: '178319',
-        type: 'drink',
-        nationality: '',
-        category: 'Cocktail',
-        alcoholicOrNot: 'Alcoholic',
-        name: 'Aquamarine',
-        image: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
-      },
-    ]);
+    localApi.setLocalKey('doneRecipes', mock);
+    localApi.setLocalKey('favoriteRecipes', mock);
     localApi.setLocalKey('inProgressRecipes', { cocktails: {}, meals: {} });
     history.push('/foods');
   };
@@ -71,13 +78,12 @@ const Login = ({ history }) => {
     <div className="l-login">
       <div className="l-login-container">
         <div className="l-login-header">
-          <h1>Login</h1>
+          <h2>Login</h2>
         </div>
         <form>
           <div className="form-group">
             <input
               type="email"
-              className="form-control"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
               placeholder="Enter email"
@@ -88,7 +94,6 @@ const Login = ({ history }) => {
           <div className="form-group">
             <input
               type="password"
-              className="form-control"
               id="exampleInputPassword1"
               placeholder="Password"
               data-testid="password-input"
@@ -97,7 +102,6 @@ const Login = ({ history }) => {
           </div>
           <button
             type="button"
-            className="btn btn-primary"
             data-testid="login-submit-btn"
             disabled={ errorEmail || errorPassword }
             onClick={ handleSubmit }

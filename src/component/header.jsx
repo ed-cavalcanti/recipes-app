@@ -23,6 +23,7 @@ const Header = ({ title, search, callback }) => (
           <img
             src={ SearchIcon }
             alt="Search Icon"
+            className="lupa"
             data-testid="search-top-btn"
           />
         </button>

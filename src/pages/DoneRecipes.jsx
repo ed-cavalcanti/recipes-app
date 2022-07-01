@@ -29,39 +29,41 @@ const DoneRecipes = () => {
   }, [filter, doneRecipes]);
 
   return (
-    <div className="l-done-recipes">
+    <div className="main-container">
       <Header title="Done Recipes" />
-      <section>
-        <button
-          type="button"
-          data-testid="filter-by-all-btn"
-          name="all"
-          onClick={ getFilter }
-        >
-          All
-        </button>
-        <button
-          type="button"
-          data-testid="filter-by-food-btn"
-          name="food"
-          onClick={ getFilter }
-        >
-          Food
-        </button>
-        <button
-          type="button"
-          data-testid="filter-by-drink-btn"
-          name="drink"
-          onClick={ getFilter }
-        >
-          Drinks
-        </button>
-      </section>
-      {
-        filteredRecipes?.map((recipe, index) => (
-          <SavedRecipesCard key={ index } recipe={ recipe } index={ index } />
-        ))
-      }
+      <div className="l-done-recipes">
+        <section className="btn-container-done">
+          <button
+            type="button"
+            data-testid="filter-by-all-btn"
+            name="all"
+            onClick={ getFilter }
+          >
+            All
+          </button>
+          <button
+            type="button"
+            data-testid="filter-by-food-btn"
+            name="food"
+            onClick={ getFilter }
+          >
+            Food
+          </button>
+          <button
+            type="button"
+            data-testid="filter-by-drink-btn"
+            name="drink"
+            onClick={ getFilter }
+          >
+            Drinks
+          </button>
+        </section>
+        {
+          filteredRecipes?.map((recipe, index) => (
+            <SavedRecipesCard key={ index } recipe={ recipe } index={ index } />
+          ))
+        }
+      </div>
     </div>
   );
 };

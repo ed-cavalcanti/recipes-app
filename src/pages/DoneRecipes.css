@@ -3,3 +3,32 @@ img {
   margin-right: auto;
   width: 80%;
 }
+
+.l-done-recipes {
+  align-items: center;
+  background-color: #1c1b1f;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.btn-container-done {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  width: 80%;
+}
+
+.btn-container-done button {
+  background-color: rgba(255, 255, 255, 0);
+  border: 2px solid #ff8906;
+  border-radius: 8px;
+  color: #ff8906;
+  width: 80px;
+}
+
+.btn-container-done button:hover {
+  background-color: #ff8906;
+  color: #1c1b1f;
+  font-weight: 800;
+}
